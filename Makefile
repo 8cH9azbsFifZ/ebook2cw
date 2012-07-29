@@ -1,7 +1,7 @@
 # ebook2cw Makefile -- Fabian Kurz, DJ1YFK -- http://fkurz.net/ham/ebook2cw.html
 
 VERSION=0.8.1
-DESTDIR ?= /usr
+DESTDIR ?= /usr/local
 
 # Set to NO to compile without Lame/Ogg-vorbis support
 USE_LAME?=YES
