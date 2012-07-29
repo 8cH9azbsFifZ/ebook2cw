@@ -7,7 +7,8 @@ DESTDIR ?= /usr
 USE_LAME?=YES
 USE_OGG?=NO
 
-CFLAGS:=$(CFLAGS) -D DESTDIR=\"$(DESTDIR)\" -D VERSION=\"$(VERSION)\"
+LDFLAGS:=$(LDFLAGS) -L/opt/local/lib
+CFLAGS:=$(CFLAGS) -I/opt//local/include -D DESTDIR=\"$(DESTDIR)\" -D VERSION=\"$(VERSION)\"
 
 ifeq ($(USE_LAME), YES)
 		CFLAGS:=$(CFLAGS) -D LAME
