@@ -663,9 +663,6 @@ void closefile (int chapter, int chw, int chms, CWP *cw) {
 
 void openfile (int chapter, CWP *cw) {
 	char outfilename[80] = "";
-#ifdef LAME
-	static char tmp[80] = "";
-#endif
 #ifdef OGGV
 	ogg_packet       hdr;
 	ogg_packet       hdr_comm;
