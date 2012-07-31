@@ -683,12 +683,15 @@ void openfile (int chapter, CWP *cw) {
 	switch (cw->encoder) {
 		case MP3:
 #ifdef LAME
-			snprintf(tmp, 79, "%s - %d", cw->id3_title, chapter);	/* title */
 			id3tag_init(gfp);
 			id3tag_set_artist(gfp, cw->id3_author);
 			id3tag_set_year(gfp, cw->id3_year);
-			id3tag_set_title(gfp, tmp);
+			id3tag_set_title(gfp, cw->id3_title);
 			id3tag_set_comment(gfp, cw->id3_comment);
+//int CDECL id3tag_set_albumart(lame_t gfp, const char* image, size_t size);
+//void CDECL id3tag_set_comment(lame_t gfp, const char* comment);
+//void CDECL id3tag_set_album(lame_t gfp, const char* album);
+
 #endif
 			break;
 		case OGG:
