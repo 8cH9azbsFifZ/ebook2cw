@@ -250,6 +250,12 @@ int main (int argc, char** argv) {
 				cw.id3_image_name);
 		exit(EXIT_FAILURE);
 	}
+	fseek(id3_imagefile, 0, SEEK_END);
+	cw.id3_image_size = ftell(id3_imagefile);
+	fseek(id3_imagefile, 0, SEEK_SET);
+	cw.id3_image = (char *)malloc(cw.id3_image_size);
+
+	/* End album art stuff */
 
 	infile = stdin;
 
