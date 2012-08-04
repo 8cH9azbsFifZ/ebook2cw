@@ -254,6 +254,12 @@ int main (int argc, char** argv) {
 	cw.id3_image_size = ftell(id3_imagefile);
 	fseek(id3_imagefile, 0, SEEK_SET);
 	cw.id3_image = (char *)malloc(cw.id3_image_size);
+	if (fread(cw.id3_image, 1, cw.id3_image_size, id3_imagefile) != cw.id3_image_size)
+	{
+		fprintf(stderr, "Error: Reading file %s. Exit.\n",
+				cw.id3_image_name);
+		exit(EXIT_FAILURE);
+	}
 
 	/* End album art stuff */
 
@@ -712,6 +718,7 @@ void openfile (int chapter, CWP *cw) {
 			id3tag_set_title(gfp, cw->id3_title);
 			id3tag_set_comment(gfp, cw->id3_comment);
 			id3tag_set_albumart(gfp, cw->id3_image, cw->id3_image_size);
+			free (cw->id3_image);
 			id3tag_set_album(gfp, cw->id3_album);
 
 #endif
