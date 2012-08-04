@@ -138,6 +138,7 @@ typedef struct {
 		id3_year[5];
 
 	/* Album art stuff */
+	char id3_image_name[80];
 	size_t id3_image_size;
 	char *id3_image;
 
@@ -185,6 +186,7 @@ int main (int argc, char** argv) {
 	int chw = 0, tw = 0, qw = 0;	/* chapter words, total words, qrq words */
 	int chms = 0, tms = 0, qms = 0; /* millisec: chapter, total, since qrq */
 	FILE *infile;
+	FILE *id3_imagefile;
 
 #ifdef CGI
 	char * querystring;
@@ -240,6 +242,8 @@ int main (int argc, char** argv) {
 	/* Album art stuff */
 	cw.id3_image = 0;
 	cw.id3_image_size = 0;
+   	strcpy(cw.id3_image_name, "cover.jpg");
+	id3_imagefile = fopen (cw.id3_image_name, "rb");
 
 	infile = stdin;
 
