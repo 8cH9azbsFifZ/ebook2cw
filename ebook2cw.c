@@ -687,7 +687,7 @@ void openfile (int chapter, CWP *cw) {
 			id3tag_set_year(gfp, cw->id3_year);
 			id3tag_set_title(gfp, cw->id3_title);
 			id3tag_set_comment(gfp, cw->id3_comment);
-//int CDECL id3tag_set_albumart(lame_t gfp, const char* image, size_t size);
+			/* TBD id3tag_set_albumart(gfp, const char* image, size_t size); */
 			id3tag_set_album(gfp, cw->id3_album);
 
 #endif
