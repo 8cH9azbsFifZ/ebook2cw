@@ -244,6 +244,12 @@ int main (int argc, char** argv) {
 	cw.id3_image_size = 0;
    	strcpy(cw.id3_image_name, "cover.jpg");
 	id3_imagefile = fopen (cw.id3_image_name, "rb");
+	if (!id3_imagefile)
+	{
+		fprintf(stderr, "Error: Cannot open file %s. Exit.\n",
+				cw.id3_image_name);
+		exit(EXIT_FAILURE);
+	}
 
 	infile = stdin;
 
