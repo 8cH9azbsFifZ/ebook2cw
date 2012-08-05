@@ -260,7 +260,7 @@ int main (int argc, char** argv) {
 				cw.id3_image_name);
 		exit(EXIT_FAILURE);
 	}
-
+	fclose(id3_imagefile);
 	/* End album art stuff */
 
 	infile = stdin;
