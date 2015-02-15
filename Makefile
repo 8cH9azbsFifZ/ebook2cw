@@ -1,14 +1,15 @@
 # ebook2cw Makefile -- Fabian Kurz, DJ1YFK -- http://fkurz.net/ham/ebook2cw.html
+#
+# $Id: Makefile 547 2012-12-29 21:07:53Z dj1yfk $
 
-VERSION=0.8.1
-DESTDIR ?= /usr/local
+VERSION=0.8.2
+DESTDIR ?= /usr
 
 # Set to NO to compile without Lame/Ogg-vorbis support
 USE_LAME?=YES
-USE_OGG?=NO
+USE_OGG?=YES
 
-LDFLAGS:=$(LDFLAGS) -L/opt/local/lib
-CFLAGS:=$(CFLAGS) -I/opt//local/include -D DESTDIR=\"$(DESTDIR)\" -D VERSION=\"$(VERSION)\"
+CFLAGS:=$(CFLAGS) -D DESTDIR=\"$(DESTDIR)\" -D VERSION=\"$(VERSION)\"
 
 ifeq ($(USE_LAME), YES)
 		CFLAGS:=$(CFLAGS) -D LAME
@@ -28,6 +29,9 @@ ebook2cw: ebook2cw.c codetables.h
 cgi: ebook2cw.c codetables.h
 	gcc -static ebook2cw.c $(LDFLAGS) -lm $(CFLAGS) -D CGI -o cw.cgi
 
+cgibuffered: ebook2cw.c codetables.h
+	gcc -static ebook2cw.c $(LDFLAGS) -lm $(CFLAGS) -D CGI -D CGIBUFFERED -o cw.cgi
+
 static:
 	gcc -static ebook2cw.c $(LDFLAGS) -lm $(CFLAGS) -o ebook2cw
 
@@ -46,6 +50,7 @@ install:
 uninstall:
 	rm -f $(DESTDIR)/bin/ebook2cw
 	rm -f $(DESTDIR)/share/man/man1/ebook2cw.1
+	rm -rf $(DESTDIR)/share/doc/ebook2cw
 
 clean:
 	rm -f ebook2cw *~ *.mp3 *.ogg *.cgi
