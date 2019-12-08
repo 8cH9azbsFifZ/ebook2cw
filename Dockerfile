@@ -12,5 +12,6 @@ ADD entrypoint.sh  /bin
 
 VOLUME /data
 
+ENV TEXT="Test"
+
 ENTRYPOINT /bin/entrypoint.sh
-CMD "Test"

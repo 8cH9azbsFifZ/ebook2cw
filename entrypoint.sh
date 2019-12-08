@@ -1,5 +1,5 @@
 #!/bin/bash
 set -x 
-echo $@ > out
+text=$TEXT
+echo $text |ebook2cw 
 
-#echo $@  |ebook2cw
